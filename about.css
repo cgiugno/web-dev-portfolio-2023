@@ -1,0 +1,246 @@
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
+
+/* 
+FONTS:
+M PLUS Rounded 1c (Tentative)
+Varela Round 
+*/
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+body {
+    margin: 0;
+}
+
+.about-page-body {
+    position: relative;
+    overflow-y: overlay;
+    overflow-x: hidden;
+    float: left;
+    background: url(./img/aboutbkgrnd.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    /* height: auto; */
+    color: white;
+}
+
+.neocities-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 1.5vh;
+    margin-left: 4.5vw;
+}
+
+.header-item {
+    margin-left: 1vw;
+
+}
+
+.header-item h1 {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0px 0px 10px white;
+
+
+}
+
+.header-item h1:hover {
+    animation: hover-flicker 1s infinite;
+}
+
+.header-item a {
+    text-decoration: none;
+    margin: none;
+    position: relative;
+}
+
+@keyframes hover-flicker {
+    0% {
+        text-shadow: 0px 0px 10px white;
+    }
+
+    2.5% {
+        text-shadow: 0px 0px 5px #d3fd4800;
+    }
+
+    5% {
+        text-shadow: 0px 0px 10px white;
+    }
+
+    45% {
+        text-shadow: 0px 0px 10px white;
+    }
+
+    47.5% {
+        text-shadow: 0px 0px 5px #d3fd4800;
+    }
+
+    75% {
+        text-shadow: 0px 0px 10px white;
+    }
+
+    80% {
+        text-shadow: 0px 0px 5px #d3fd4800;
+    }
+
+    85% {
+        text-shadow: 0px 0px 10px white;
+    }
+
+    100% {
+        text-shadow: 0px 0px 5px #d3fd4800;
+    }
+}
+
+.neocities-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 70vh;
+    width: 100vw;
+    position: absolute;
+    top: 20vh;
+    left: 0vw;
+    align-self: center;
+
+}
+
+.aboutmeprofile {
+    /* width: 33vw; */
+    /* height: 33vw; */
+
+    /* flex-grow: 2; */
+    margin: 2vw;
+}
+
+@media screen and (max-width: 640px) {
+    .aboutmeprofile {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .aboutmeprofile {
+        width: 495px;
+        height: 495px;
+    }
+}
+
+.aboutmepanel::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    
+    background: url(./img/aboutmeinfopanel.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    transform: rotate(90deg);
+}
+
+.aboutmepanel {
+    /* background: url(./img/aboutmeinfopanel.png);
+    background-size: contain;
+    background-repeat: no-repeat; */
+    /* width: auto; */
+    /* height: 32vw; */
+
+
+    width: 885px;
+    height: 480px;
+    /* flex-grow: 2; */
+    padding: 0px;
+    color: #F3F9DA;
+}
+
+.aboutmepanel h1 {
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+
+    color: #F3F9DA;
+}
+
+.aboutmepanel p {
+    font-family: 'Varela Round', sans-serif;
+
+    color: #F3F9DA;
+}
+
+@media screen and (min-width: 641px) {
+    .aboutmepanel {
+        margin-bottom: 3vw;
+        margin-top: 3vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    .aboutmepanel h1 {
+        font-size: 38px;
+    }
+
+    .aboutmepanel p {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    .aboutmepanel {
+        margin-bottom: 3vw;
+        margin-top: 3vw;
+        margin-left: 1vw;
+        margin-right: 5vw;
+    }
+
+    .aboutmepanel h1 {
+        font-size: 26px;
+    }
+
+    .aboutmepanel p {
+        font-size: 16px;
+    }
+}
+
+.aboutmetext {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+@media screen and (max-width: 640px) {
+    .aboutmetext {
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+        padding-right: 8vw;
+        padding-left: 8vw;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .aboutmetext {
+        padding: 5vw;
+    }
+}
+
+.aboutmetext a {
+    text-decoration: none;
+}
