@@ -19,7 +19,7 @@ body {
     overflow-y: overlay;
     overflow-x: hidden;
     float: left;
-    background: url(./img/aboutbkgrnd.png);
+    background: url(./img/aboutbkgrnd.webp);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
@@ -40,9 +40,19 @@ body {
     margin-left: 4.5vw;
 }
 
-.header-item {
-    margin-left: 1vw;
 
+
+@media screen and (max-width: 640px) {
+    .header-item {
+        margin-left: 3vw;
+    
+    }
+}
+@media screen and (min-width: 641px) {
+    .header-item {
+        margin-left: 1vw;
+    
+    }
 }
 
 .header-item h1 {
@@ -140,7 +150,7 @@ body {
     }
 }
 
-.aboutmepanel::before {
+/* .aboutmepanel::before {
     content: "";
     position: absolute;
     width: 200%;
@@ -149,23 +159,39 @@ body {
     left: -50%;
     z-index: -1;
     
-    background: url(./img/aboutmeinfopanel.png);
+    background: url(./img/aboutmeinfopanel.webp);
     background-size: contain;
     background-repeat: no-repeat;
     
     transform: rotate(90deg);
+} */
+@media screen and (max-width: 640px) {
+    .aboutmepanel {
+        background: url(./img/aboutmeinfopanel90deg.webp);
+
+        height: 875px;
+        width: 483px;
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .aboutmepanel {
+        background: url(./img/aboutmeinfopanel.webp);
+
+
+        height: 480px;
+        width: 885px;
+    }
 }
 
 .aboutmepanel {
-    /* background: url(./img/aboutmeinfopanel.png);
+
     background-size: contain;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     /* width: auto; */
     /* height: 32vw; */
 
 
-    width: 885px;
-    height: 480px;
     /* flex-grow: 2; */
     padding: 0px;
     color: #F3F9DA;
@@ -206,8 +232,8 @@ body {
     .aboutmepanel {
         margin-bottom: 3vw;
         margin-top: 3vw;
-        margin-left: 1vw;
-        margin-right: 5vw;
+        margin-left: 3vw;
+        margin-right: 3vw;
     }
 
     .aboutmepanel h1 {
