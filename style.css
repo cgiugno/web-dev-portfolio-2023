@@ -1797,7 +1797,13 @@ body {
 
     }
 }
-@media screen and (min-width: 301px) and (max-width: 470px) {
+@media screen and (min-width: 301px) and (max-width: 350px) {
+    .contact-form-body-text p {
+        font-size: 8px;
+
+    }
+}
+@media screen and (min-width: 351px) and (max-width: 470px) {
     .contact-form-body-text p {
         font-size: 10px;
 
