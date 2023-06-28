@@ -17,17 +17,57 @@ $(document).ready(function () {
                     $(this.parentElement).siblings()[i].classList.remove("back");
                     $(this.parentElement).siblings()[i].classList.add("front");
                 }
+                if ($(this.parentElement).siblings()[i].classList.contains("floating-card")) {
+                    $(this.parentElement).siblings()[i].classList.remove('floating-card');
+
+                }
             }
 
         }
     });
 
+    $(".rh-press-forward-icon").click(function () {
+        $(".rh-press-inner").scrollTo("max", 500);
+    });
+    $(".rh-press-back-icon").click(function () {
+        $(".rh-press-inner").scrollTo("0", 500);
+    });
+
+    $(".vg-forward-icon").click(function () {
+        $(".vg-inner").scrollTo("max", 500);
+    });
+    $(".vg-back-icon").click(function () {
+        $(".vg-inner").scrollTo("0", 500);
+    });
+
+    $(".p-forward-icon").click(function () {
+        $(".p-inner").scrollTo($(".p-video-demos-text-p-0").offset().left, 500);
+    });
+    $(".p-back-icon").click(function () {
+        $(".p-inner").scrollTo("0", 500);
+    });
+    $(".p-forward-demo-icon").click(function () {
+        $(".p-inner").scrollTo("max", 500);
+    });
+    $(".p-back-demo-icon").click(function () {
+        console.log($(".p-video-demos-text-p-0").offset().left);
+        $(".p-inner").scrollTo($(".p-inner").scrollLeft() + ($(".p-video-demos-text-p-0").offset().left - 10), 500);
+    });
+
+    $(".sp-forward-icon").click(function () {
+        $(".sp-inner").scrollTo("max", 500);
+    });
+    $(".sp-back-icon").click(function () {
+        $(".sp-inner").scrollTo("0", 500);
+    });
 
     $(".rh-press-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const rhPressScrollHeight = document.querySelector(".rh-press-info").offsetTop;
         console.log("RH Press Scroll: " + rhPressScrollHeight);
-        window.scrollTo(0, (rhPressScrollHeight), "smooth");
+
+        $(window).scrollTo(rhPressScrollHeight, 700);
+        // window.scrollTo(0, (rhPressScrollHeight), "smooth");
 
         if ((window.matchMedia('(hover: none)').matches)) {
             // console.log(this.parentElement);
@@ -39,7 +79,9 @@ $(document).ready(function () {
     $(".vg-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const vgScrollHeight = document.querySelector(".vg-info").offsetTop;
-        window.scrollTo(0, (vgScrollHeight), "smooth");
+
+        $(window).scrollTo(vgScrollHeight, 700);
+
         if ((window.matchMedia('(hover: none)').matches)) {
             // console.log(this.parentElement);
             this.parentElement.classList.remove('back');
@@ -50,7 +92,8 @@ $(document).ready(function () {
     $(".p-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const pScrollHeight = document.querySelector(".p-info").offsetTop;
-        window.scrollTo(0, (pScrollHeight), "smooth");
+        $(window).scrollTo(pScrollHeight, 700);
+
         if ((window.matchMedia('(hover: none)').matches)) {
             // console.log(this.parentElement);
             this.parentElement.classList.remove('back');
@@ -61,7 +104,8 @@ $(document).ready(function () {
     $(".s-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const sScrollHeight = document.querySelector(".sp-info").offsetTop;
-        window.scrollTo(0, (sScrollHeight), "smooth");
+        $(window).scrollTo(sScrollHeight, 700);
+
         if ((window.matchMedia('(hover: none)').matches)) {
             // console.log(this.parentElement);
             this.parentElement.classList.remove('back');
@@ -200,7 +244,7 @@ $(document).ready(function () {
     var scrolledRight = false;
     $(".project-info-inner").scroll(function () {
         if (window.matchMedia('(hover: hover)').matches) {
-            console.log("Has hover");
+            // console.log("Has hover");
             // console.log("Scroll X " + this.scrollX);
 
             if (scrolledRight === false) {
@@ -217,9 +261,9 @@ $(document).ready(function () {
                 scrolledRight = false;
             }
         }
-        else {
-            console.log("no hover");
-        }
+        // else {
+        //     console.log("no hover");
+        // }
     });
 
     $("body").on("touchmove", function (event) {
@@ -228,7 +272,7 @@ $(document).ready(function () {
 
     $(".project-info-bkgrnd").mouseenter(function (event) {
         if (window.matchMedia('(hover: hover)').matches) {
-            console.log("Has hover");
+            // console.log("Has hover");
 
             var thisTop = this.getBoundingClientRect().top;
             var thisLeft = this.getBoundingClientRect().left;
@@ -285,15 +329,15 @@ $(document).ready(function () {
             mousePosX = event.pageX;
             mousePosY = event.pageY;
         }
-        else {
-            console.log("no hover");
-        }
+        // else {
+        //     console.log("no hover");
+        // }
 
     });
 
     $(".project-info-bkgrnd").mousemove(function (event) {
         if (window.matchMedia('(hover: hover)').matches) {
-            console.log("Has hover");
+            // console.log("Has hover");
 
             if (scrolledRight === false) {
                 var followMouse = document.querySelector(".follow-mouse");
@@ -305,13 +349,13 @@ $(document).ready(function () {
                 mousePosY = event.pageY;
             }
         }
-        else {
-            console.log("no hover");
-        }
+        // else {
+        //     console.log("no hover");
+        // }
     });
     $(".project-info-bkgrnd").mouseleave(function (event) {
         if (window.matchMedia('(hover: hover)').matches) {
-            console.log("Has hover");
+            // console.log("Has hover");
 
             var followmouse = document.querySelector('.follow-mouse');
             followmouse.style.visibility = "hidden";
@@ -319,9 +363,9 @@ $(document).ready(function () {
             mousePosX = event.pageX;
             mousePosY = event.pageY;
         }
-        else {
-            console.log("no hover");
-        }
+        // else {
+        //     console.log("no hover");
+        // }
 
     });
 
