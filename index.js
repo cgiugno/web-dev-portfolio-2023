@@ -4,26 +4,70 @@ var topP = 0;
 var topSP = 0;
 
 $(document).ready(function () {
+    $(".project-card-front").click(function () {
+        if ((window.matchMedia('(hover: none)').matches)) {
+            this.parentElement.classList.remove('floating-card');
+            this.parentElement.classList.remove('front');
+            this.parentElement.classList.add('back');
+
+            for (var i = 0; i < $(this.parentElement).siblings().length; i++) {
+                if ($(this.parentElement).siblings()[i].classList.contains("back")) {
+                    console.log("Flip " + i + ($(this.parentElement).siblings().length));
+
+                    $(this.parentElement).siblings()[i].classList.remove("back");
+                    $(this.parentElement).siblings()[i].classList.add("front");
+                }
+            }
+
+        }
+    });
+
+
     $(".rh-press-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const rhPressScrollHeight = document.querySelector(".rh-press-info").offsetTop;
         console.log("RH Press Scroll: " + rhPressScrollHeight);
         window.scrollTo(0, (rhPressScrollHeight), "smooth");
+
+        if ((window.matchMedia('(hover: none)').matches)) {
+            // console.log(this.parentElement);
+            this.parentElement.classList.remove('back');
+            this.parentElement.classList.add('front');
+            // console.log(this.parentElement);
+        }
     });
     $(".vg-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const vgScrollHeight = document.querySelector(".vg-info").offsetTop;
         window.scrollTo(0, (vgScrollHeight), "smooth");
+        if ((window.matchMedia('(hover: none)').matches)) {
+            // console.log(this.parentElement);
+            this.parentElement.classList.remove('back');
+            this.parentElement.classList.add('front');
+            // console.log(this.parentElement);
+        }
     });
     $(".p-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const pScrollHeight = document.querySelector(".p-info").offsetTop;
         window.scrollTo(0, (pScrollHeight), "smooth");
+        if ((window.matchMedia('(hover: none)').matches)) {
+            // console.log(this.parentElement);
+            this.parentElement.classList.remove('back');
+            this.parentElement.classList.add('front');
+            // console.log(this.parentElement);
+        }
     });
     $(".s-card .project-card-back").click(function () {
         console.log("auto scroll?");
         const sScrollHeight = document.querySelector(".sp-info").offsetTop;
         window.scrollTo(0, (sScrollHeight), "smooth");
+        if ((window.matchMedia('(hover: none)').matches)) {
+            // console.log(this.parentElement);
+            this.parentElement.classList.remove('back');
+            this.parentElement.classList.add('front');
+            // console.log(this.parentElement);
+        }
     });
 
     var alreadyAnimated = [false, false, false, false];
