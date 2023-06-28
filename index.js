@@ -12,7 +12,7 @@ $(document).ready(function () {
 
             for (var i = 0; i < $(this.parentElement).siblings().length; i++) {
                 if ($(this.parentElement).siblings()[i].classList.contains("back")) {
-                    console.log("Flip " + i + ($(this.parentElement).siblings().length));
+                    // console.log("Flip " + i + ($(this.parentElement).siblings().length));
 
                     $(this.parentElement).siblings()[i].classList.remove("back");
                     $(this.parentElement).siblings()[i].classList.add("front");
@@ -50,7 +50,7 @@ $(document).ready(function () {
         $(".p-inner").scrollTo("max", 500);
     });
     $(".p-back-demo-icon").click(function () {
-        console.log($(".p-video-demos-text-p-0").offset().left);
+        // console.log($(".p-video-demos-text-p-0").offset().left);
         $(".p-inner").scrollTo($(".p-inner").scrollLeft() + ($(".p-video-demos-text-p-0").offset().left - 10), 500);
     });
 
@@ -62,9 +62,9 @@ $(document).ready(function () {
     });
 
     $(".rh-press-card .project-card-back").click(function () {
-        console.log("auto scroll?");
+        // console.log("auto scroll?");
         const rhPressScrollHeight = document.querySelector(".rh-press-info").offsetTop;
-        console.log("RH Press Scroll: " + rhPressScrollHeight);
+        // console.log("RH Press Scroll: " + rhPressScrollHeight);
 
         $(window).scrollTo(rhPressScrollHeight, 700);
         // window.scrollTo(0, (rhPressScrollHeight), "smooth");
@@ -77,7 +77,7 @@ $(document).ready(function () {
         }
     });
     $(".vg-card .project-card-back").click(function () {
-        console.log("auto scroll?");
+        // console.log("auto scroll?");
         const vgScrollHeight = document.querySelector(".vg-info").offsetTop;
 
         $(window).scrollTo(vgScrollHeight, 700);
@@ -90,7 +90,7 @@ $(document).ready(function () {
         }
     });
     $(".p-card .project-card-back").click(function () {
-        console.log("auto scroll?");
+        // console.log("auto scroll?");
         const pScrollHeight = document.querySelector(".p-info").offsetTop;
         $(window).scrollTo(pScrollHeight, 700);
 
@@ -102,7 +102,7 @@ $(document).ready(function () {
         }
     });
     $(".s-card .project-card-back").click(function () {
-        console.log("auto scroll?");
+        // console.log("auto scroll?");
         const sScrollHeight = document.querySelector(".sp-info").offsetTop;
         $(window).scrollTo(sScrollHeight, 700);
 
