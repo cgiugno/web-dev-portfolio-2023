@@ -114,7 +114,7 @@ $(document).ready(function () {
     var lastScroll = window.scrollY;
     var mousePosX = 0;
     var mousePosY = 0;
-    
+
     topRH = this.querySelector(".rh-press-info").getBoundingClientRect().top;
     topVG = this.querySelector(".vg-info").getBoundingClientRect().top;
     topP = this.querySelector(".p-info").getBoundingClientRect().top;
@@ -240,25 +240,24 @@ $(document).ready(function () {
 
     var scrolledRight = false;
     $(".project-info-inner").scroll(function () {
-        // console.log("Scroll X " + this.scrollX);
+        if (window.matchMedia('hover: hover')) {
+            console.log("Has hover");
+            // console.log("Scroll X " + this.scrollX);
 
-        if (scrolledRight === false) {
-            var followmouse = document.querySelector('.follow-mouse');
-            followmouse.style.visibility = "hidden";
+            if (scrolledRight === false) {
+                var followmouse = document.querySelector('.follow-mouse');
+                followmouse.style.visibility = "hidden";
 
-            scrolledRight = true;
+                scrolledRight = true;
+            }
+            if ((scrolledRight === true) && (this.scrollLeft === 0)) {
+                var followmouse = document.querySelector('.follow-mouse');
+                followmouse.style.visibility = "visible";
+
+
+                scrolledRight = false;
+            }
         }
-        if ((scrolledRight === true) && (this.scrollLeft === 0)) {
-            var followmouse = document.querySelector('.follow-mouse');
-            followmouse.style.visibility = "visible";
-
-
-            scrolledRight = false;
-        }
-
-
-
-
     });
 
     $("body").on("touchmove", function (event) {
@@ -266,66 +265,57 @@ $(document).ready(function () {
     });
 
     $(".project-info-bkgrnd").mouseenter(function (event) {
-        var thisTop = this.getBoundingClientRect().top;
-        var thisLeft = this.getBoundingClientRect().left;
+        if (window.matchMedia('hover: hover')) {
+            console.log("Has hover");
 
-        if ((document.querySelector(".follow-mouse") == null) && (scrolledRight === false)) {
-            var followMouse = document.createElement("div");
+            var thisTop = this.getBoundingClientRect().top;
+            var thisLeft = this.getBoundingClientRect().left;
 
-            followMouse.classList.add("follow-mouse");
-            $(followMouse).css({
-                "position": "absolute",
-                "height": "50px",
-                "width": "125px",
-                "background-color": "#99AED3",
-                "animation": "pulse 1.5s infinite",
-                "border-radius": "50px",
-                "z-index": 20,
-                "top": "0",
-                "left": "0",
-            })
+            if ((document.querySelector(".follow-mouse") == null) && (scrolledRight === false)) {
+                var followMouse = document.createElement("div");
 
-            var followmousetext = document.createElement("p");
-            followmousetext.innerText = "Scroll Right"
+                followMouse.classList.add("follow-mouse");
+                $(followMouse).css({
+                    "position": "absolute",
+                    "height": "50px",
+                    "width": "125px",
+                    "background-color": "#99AED3",
+                    "animation": "pulse 1.5s infinite",
+                    "border-radius": "50px",
+                    "z-index": 20,
+                    "top": "0",
+                    "left": "0",
+                })
 
-            $(followmousetext).css({
-                "font-family": "Quicksand, sans-serif",
-                "margin-left": "12.5px",
-                "margin-top": "15px",
-                "font-size": "17px",
-                "color": "white",
-            });
+                var followmousetext = document.createElement("p");
+                followmousetext.innerText = "Scroll Right"
 
-            followMouse.appendChild(followmousetext);
+                $(followmousetext).css({
+                    "font-family": "Quicksand, sans-serif",
+                    "margin-left": "12.5px",
+                    "margin-top": "15px",
+                    "font-size": "17px",
+                    "color": "white",
+                });
 
-            document.querySelector("body").appendChild(followMouse);
-        }
-        var followMouse = document.querySelector(".follow-mouse");
-        // console.log("Client X: " + event.clientX);
-        // console.log("Client Y: " + event.clientY);
-        // console.log("Box X: " + thisLeft + (window.scrollX | window.pageXOffset));
-        // console.log("Box Y: " + thisTop + ((window.scrollY | window.pageYOffset)));
+                followMouse.appendChild(followmousetext);
 
-        // console.log("X: " + (event.clientX + (thisLeft + (window.scrollX | window.pageXOffset))));
-        // console.log("Y: " + (event.clientY + (thisTop + (window.scrollY | window.pageYOffset))));
-        if (scrolledRight === false) {
-            $(followMouse).css({
-                "visibility": "visible",
-            });
-        }
-
-        $(followMouse).css({
-            "transform": "translate(" + (event.pageX + 25) + "px, " + (event.pageY - 50) + "px)",
-        });
-
-        mousePosX = event.pageX;
-        mousePosY = event.pageY;
-
-    });
-
-    $(".project-info-bkgrnd").mousemove(function (event) {
-        if (scrolledRight === false) {
+                document.querySelector("body").appendChild(followMouse);
+            }
             var followMouse = document.querySelector(".follow-mouse");
+            // console.log("Client X: " + event.clientX);
+            // console.log("Client Y: " + event.clientY);
+            // console.log("Box X: " + thisLeft + (window.scrollX | window.pageXOffset));
+            // console.log("Box Y: " + thisTop + ((window.scrollY | window.pageYOffset)));
+
+            // console.log("X: " + (event.clientX + (thisLeft + (window.scrollX | window.pageXOffset))));
+            // console.log("Y: " + (event.clientY + (thisTop + (window.scrollY | window.pageYOffset))));
+            if (scrolledRight === false) {
+                $(followMouse).css({
+                    "visibility": "visible",
+                });
+            }
+
             $(followMouse).css({
                 "transform": "translate(" + (event.pageX + 25) + "px, " + (event.pageY - 50) + "px)",
             });
@@ -333,13 +323,36 @@ $(document).ready(function () {
             mousePosX = event.pageX;
             mousePosY = event.pageY;
         }
+
+
+    });
+
+    $(".project-info-bkgrnd").mousemove(function (event) {
+        if (window.matchMedia('hover: hover')) {
+            console.log("Has hover");
+
+            if (scrolledRight === false) {
+                var followMouse = document.querySelector(".follow-mouse");
+                $(followMouse).css({
+                    "transform": "translate(" + (event.pageX + 25) + "px, " + (event.pageY - 50) + "px)",
+                });
+
+                mousePosX = event.pageX;
+                mousePosY = event.pageY;
+            }
+        }
     });
     $(".project-info-bkgrnd").mouseleave(function (event) {
-        var followmouse = document.querySelector('.follow-mouse');
-        followmouse.style.visibility = "hidden";
+        if (window.matchMedia('hover: hover')) {
+            console.log("Has hover");
 
-        mousePosX = event.pageX;
-        mousePosY = event.pageY;
+            var followmouse = document.querySelector('.follow-mouse');
+            followmouse.style.visibility = "hidden";
+
+            mousePosX = event.pageX;
+            mousePosY = event.pageY;
+        }
+
     });
 
     addEventListener("resize", (event) => {
@@ -347,8 +360,8 @@ $(document).ready(function () {
         topVG = this.querySelector(".vg-info").getBoundingClientRect().top;
         topP = this.querySelector(".p-info").getBoundingClientRect().top;
         topSP = this.querySelector(".sp-info").getBoundingClientRect().top;
-    
-    
+
+
         console.log("NEW RH: " + topRH);
         console.log("NEW VG: " + topVG);
         console.log("NEW P: " + topP);
