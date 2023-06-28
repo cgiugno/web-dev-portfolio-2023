@@ -25,90 +25,6 @@ $(document).ready(function () {
         const sScrollHeight = document.querySelector(".sp-info").offsetTop;
         window.scrollTo(0, (sScrollHeight), "smooth");
     });
-    // function cardHover(htmlEl) {
-    //     $(this).stop(true, true);
-    //     $(this).css("top", "0px");
-
-    //     console.log("this is " + htmlEl);
-    //     console.log("Mouse entered.");
-    //     console.log("Front card? " + htmlEl.classList.contains("front"));
-    //     if (htmlEl.classList.contains("front")) {
-
-
-    //         console.log("animating...");
-    //         $(htmlEl).css("animation", "card-hover-short 1.5s ease-in-out infinite");
-
-    //     }
-    // }
-    // $(".project-card").mouseenter(function (event) {
-    //     cardHover(this);
-    // });
-    // $(".project-card").mouseleave(function (event) {
-    //     console.log("leaving");
-    //     $(this).css("animation", "none");
-    //     $(this).css("top", "0px");
-    // });
-
-    // $(".project-card").click(function (event) {
-    //     console.log(this);
-    //     if (this.classList.contains("front")) {
-    //         console.log("is front");
-    //         $(this).css("animation", "none");
-    //         $(this).css("top", "0px");
-
-    //         for (var i = 0; i < $(this).siblings().length; i++) {
-    //             if ($(this).siblings()[i].classList.contains("back")) {
-    //                 console.log("Flip " + i + ($(this).siblings().length));
-
-    //                 // $(this).siblings()[i].css("transform", "rotateY(0deg)");
-    //                 $(this).siblings()[i].style.setProperty("transform", "rotateY(0deg)");
-
-    //                 // $(this).siblings()[i].querySelector(".project-card-front").style.setProperty("display", "block");
-    //                 // $(this).siblings()[i].querySelector(".project-card-back").style.setProperty("display", "none");
-    //                 $(this).siblings()[i].classList.remove("back");
-    //                 $(this).siblings()[i].classList.add("front");
-    //             }
-    //         }
-    //         $(this).css({
-    //             transform: "rotateY(180deg)",
-    //             transition: "0.8s"
-    //         });
-
-
-    //         // this.querySelector(".project-card-front").style.setProperty("display", "none");
-    //         // this.querySelector(".project-card-back").style.setProperty("display", "block");
-    //         this.classList.remove("front");
-    //         this.classList.add("back");
-
-    //     } else {
-    //         console.log("is back");
-
-    //         $(this).css("transform", "rotateY(0deg)");
-
-
-    //         // this.querySelector(".project-card-front").style.setProperty("display", "block");
-    //         // this.querySelector(".project-card-back").style.setProperty("display", "none");
-
-    //         this.classList.remove("back");
-    //         const currHTMLEl = this;
-
-    //         const deferred = $.Deferred();
-    //         deferred.done(function (tobe) {
-    //             $(tobe).addClass("front");
-    //         });
-    //         deferred.done(function (tobe) {
-    //             console.log("Front card in flip? " + tobe.classList.contains("front"));
-    //             cardHover(tobe);
-    //         });
-
-    //         deferred.resolve(this);
-    //     }
-
-
-
-    // })
-
-
 
     var alreadyAnimated = [false, false, false, false];
     var lastScroll = window.scrollY;
@@ -129,18 +45,18 @@ $(document).ready(function () {
         // console.log("Past Point Down " + (pastPointDown + (window.scrollY | window.pageYOffset)));
         // console.log("Past Point Up " + (pastPointUp + (window.scrollY | window.pageYOffset)))
 
-        console.log("Top of RH: " + topRH);
-        console.log("Top of VG: " + topVG);
-        console.log("Top of P: " + topP);
-        console.log("Top of SP: " + topSP);
+        // console.log("Top of RH: " + topRH);
+        // console.log("Top of VG: " + topVG);
+        // console.log("Top of P: " + topP);
+        // console.log("Top of SP: " + topSP);
         // console.log("End of Page: " + document.body.offsetHeight);
         // console.log("Reached end? " + ((window.innerHeight + (window.scrollY | window.pageYOffset)) >= document.body.offsetHeight));
 
         var followmouse = document.querySelector(".follow-mouse");
         if (followmouse !== null) {
-            console.log("fm not null");
-            console.log("lastscroll " + lastScroll);
-            console.log("y " + (window.scrollY | window.pageYOffset));
+            // console.log("fm not null");
+            // console.log("lastscroll " + lastScroll);
+            // console.log("y " + (window.scrollY | window.pageYOffset));
             $(followmouse).css({
                 "transform": "translate(" + (mousePosX + 25) + "px, " + (mousePosY + ((window.scrollY | window.pageYOffset) - lastScroll) - 50) + "px)",
             });
@@ -229,7 +145,6 @@ $(document).ready(function () {
                 alreadyAnimated[3] = false;
 
             }
-            console.log("\n\n");
             lastScroll = (window.scrollY | window.pageYOffset);
         }
     }
@@ -240,7 +155,7 @@ $(document).ready(function () {
 
     var scrolledRight = false;
     $(".project-info-inner").scroll(function () {
-        if (window.matchMedia('hover: hover')) {
+        if (window.matchMedia('(hover: hover)').matches) {
             console.log("Has hover");
             // console.log("Scroll X " + this.scrollX);
 
@@ -258,6 +173,9 @@ $(document).ready(function () {
                 scrolledRight = false;
             }
         }
+        else {
+            console.log("no hover");
+        }
     });
 
     $("body").on("touchmove", function (event) {
@@ -265,7 +183,7 @@ $(document).ready(function () {
     });
 
     $(".project-info-bkgrnd").mouseenter(function (event) {
-        if (window.matchMedia('hover: hover')) {
+        if (window.matchMedia('(hover: hover)').matches) {
             console.log("Has hover");
 
             var thisTop = this.getBoundingClientRect().top;
@@ -323,12 +241,14 @@ $(document).ready(function () {
             mousePosX = event.pageX;
             mousePosY = event.pageY;
         }
-
+        else {
+            console.log("no hover");
+        }
 
     });
 
     $(".project-info-bkgrnd").mousemove(function (event) {
-        if (window.matchMedia('hover: hover')) {
+        if (window.matchMedia('(hover: hover)').matches) {
             console.log("Has hover");
 
             if (scrolledRight === false) {
@@ -341,9 +261,12 @@ $(document).ready(function () {
                 mousePosY = event.pageY;
             }
         }
+        else {
+            console.log("no hover");
+        }
     });
     $(".project-info-bkgrnd").mouseleave(function (event) {
-        if (window.matchMedia('hover: hover')) {
+        if (window.matchMedia('(hover: hover)').matches) {
             console.log("Has hover");
 
             var followmouse = document.querySelector('.follow-mouse');
@@ -351,6 +274,9 @@ $(document).ready(function () {
 
             mousePosX = event.pageX;
             mousePosY = event.pageY;
+        }
+        else {
+            console.log("no hover");
         }
 
     });
@@ -362,14 +288,98 @@ $(document).ready(function () {
         topSP = this.querySelector(".sp-info").getBoundingClientRect().top;
 
 
-        console.log("NEW RH: " + topRH);
-        console.log("NEW VG: " + topVG);
-        console.log("NEW P: " + topP);
-        console.log("NEW SP: " + topSP);
-        console.log("\n\n");
+        // console.log("NEW RH: " + topRH);
+        // console.log("NEW VG: " + topVG);
+        // console.log("NEW P: " + topP);
+        // console.log("NEW SP: " + topSP);
+        // console.log("\n\n");
 
 
     });
 });
 
+
+
+    // function cardHover(htmlEl) {
+    //     $(this).stop(true, true);
+    //     $(this).css("top", "0px");
+
+    //     console.log("this is " + htmlEl);
+    //     console.log("Mouse entered.");
+    //     console.log("Front card? " + htmlEl.classList.contains("front"));
+    //     if (htmlEl.classList.contains("front")) {
+
+
+    //         console.log("animating...");
+    //         $(htmlEl).css("animation", "card-hover-short 1.5s ease-in-out infinite");
+
+    //     }
+    // }
+    // $(".project-card").mouseenter(function (event) {
+    //     cardHover(this);
+    // });
+    // $(".project-card").mouseleave(function (event) {
+    //     console.log("leaving");
+    //     $(this).css("animation", "none");
+    //     $(this).css("top", "0px");
+    // });
+
+    // $(".project-card").click(function (event) {
+    //     console.log(this);
+    //     if (this.classList.contains("front")) {
+    //         console.log("is front");
+    //         $(this).css("animation", "none");
+    //         $(this).css("top", "0px");
+
+    //         for (var i = 0; i < $(this).siblings().length; i++) {
+    //             if ($(this).siblings()[i].classList.contains("back")) {
+    //                 console.log("Flip " + i + ($(this).siblings().length));
+
+    //                 // $(this).siblings()[i].css("transform", "rotateY(0deg)");
+    //                 $(this).siblings()[i].style.setProperty("transform", "rotateY(0deg)");
+
+    //                 // $(this).siblings()[i].querySelector(".project-card-front").style.setProperty("display", "block");
+    //                 // $(this).siblings()[i].querySelector(".project-card-back").style.setProperty("display", "none");
+    //                 $(this).siblings()[i].classList.remove("back");
+    //                 $(this).siblings()[i].classList.add("front");
+    //             }
+    //         }
+    //         $(this).css({
+    //             transform: "rotateY(180deg)",
+    //             transition: "0.8s"
+    //         });
+
+
+    //         // this.querySelector(".project-card-front").style.setProperty("display", "none");
+    //         // this.querySelector(".project-card-back").style.setProperty("display", "block");
+    //         this.classList.remove("front");
+    //         this.classList.add("back");
+
+    //     } else {
+    //         console.log("is back");
+
+    //         $(this).css("transform", "rotateY(0deg)");
+
+
+    //         // this.querySelector(".project-card-front").style.setProperty("display", "block");
+    //         // this.querySelector(".project-card-back").style.setProperty("display", "none");
+
+    //         this.classList.remove("back");
+    //         const currHTMLEl = this;
+
+    //         const deferred = $.Deferred();
+    //         deferred.done(function (tobe) {
+    //             $(tobe).addClass("front");
+    //         });
+    //         deferred.done(function (tobe) {
+    //             console.log("Front card in flip? " + tobe.classList.contains("front"));
+    //             cardHover(tobe);
+    //         });
+
+    //         deferred.resolve(this);
+    //     }
+
+
+
+    // })
 
